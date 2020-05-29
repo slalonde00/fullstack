@@ -6,7 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+var countRouter = require('./routes/count');
 var list = require('./quotes.json');
 var fs = require('fs');
 
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/quote/count',countRouter);
+app.use('/quote',countRouter);
 
 let file = fs.readFileSync('./quotes.json').toString();
 let lines = file.split('}');
