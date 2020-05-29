@@ -36,6 +36,8 @@ function countQuotes(filename = '') {
   return (calculSeparateurNumber);
 }
 
+countQuotes('./quotes.json');
+
 findQuote = (name = '') => {
   let searchFor = name
   let foundOn = []
