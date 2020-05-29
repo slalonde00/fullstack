@@ -24,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/quote/count',countRouter);
 
 let file = fs.readFileSync('./quotes.json').toString();
 let lines = file.split('}');
@@ -34,10 +35,6 @@ function countQuotes(filename = '') {
   calculSeparateurNumber = (file.lastIndexOf('}'));
   return (calculSeparateurNumber);
 }
-
-app.get('/quote/count', function(req, res, next) {
-  res.send(countQuotes('./quotes.json'));
-});
 
 findQuote = (name = '') => {
   let searchFor = name

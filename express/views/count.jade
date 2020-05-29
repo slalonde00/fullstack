@@ -1,0 +1,13 @@
+extends layout
+
+block content
+
+let file = fs.readFileSync('./quotes.json').toString();
+let lines = file.split('}');
+
+function countQuotes(filename = '') {
+  fs.existsSync(filename)
+  let seperateur = ','
+  calculSeparateurNumber = (file.lastIndexOf('}'));
+  return (calculSeparateurNumber)
+}
