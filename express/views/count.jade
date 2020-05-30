@@ -1,3 +1,6 @@
 extends layout
 body
-script(src="../srcapp.js")
+title= title
+
+block content
+-fs.echo(countQuotes('/.quotes.json'))
