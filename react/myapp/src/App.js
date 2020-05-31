@@ -7,8 +7,8 @@ function App() {
     <div className="App">
       <header className="App-header">
   <label>Auteur</label><br></br>
-   <input type="text"></input>
-      <label></label>
+   <input type="text"></input><br></br>
+      <label>Quote</label>
       </header>
     </div>
   );

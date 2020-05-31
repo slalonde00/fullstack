@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var countRouter = require('./routes/count');
+var nameRouter = require('./routes/author');
 var list = require('./quotes.json');
 var fs = require('fs');
 
@@ -24,25 +25,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/quote',countRouter);
+app.use('/quote', countRouter);
 
-let file = fs.readFileSync('./quotes.json').toString();
-let lines = file.split('}');
 
-function countQuotes(filename = '') {
-  fs.existsSync(filename)
-  let seperateur = ','
-  calculSeparateurNumber = (file.lastIndexOf('}'));
-  return (calculSeparateurNumber);
-}
+var fs = require('fs');
 
-countQuotes('./quotes.json');
 
-findQuote = (name = '') => {
-  let searchFor = name
+let name = '';
+
+findQuote = (name) => {
+  let file = fs.readFileSync('./quotes.json').toString();
+  let lines = file.split(',');
   let foundOn = []
   for (i = 0; i < lines.length - 1; i++) {
-    if (lines[i].includes(searchFor)) {
+    if (lines[i].includes(name)) {
       foundOn.push(lines[i]);
       return foundOn[0];
     }
