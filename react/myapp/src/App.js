@@ -1,6 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import QuoteContainer from './QuoteContainer.js'
+
+
+
 
 function App() {
   return (
@@ -8,9 +11,8 @@ function App() {
       <header className="App-header">
   <label>Auteur</label><br></br>
    <input type="text"></input><br></br>
-   <button type="submit" class="btn btn-primary">Submit</button><br></br>
-      <label>Quote</label><br></br>
-      <label>Quotes go here</label>
+   
+     <QuoteContainer/>
       
       </header>
       

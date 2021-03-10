@@ -34,7 +34,7 @@ var fs = require('fs');
 let name = '';
 
 findQuote = (name) => {
-  let file = fs.readFileSync('./quotes.json').toString();
+  let file = fs.readFileSync('../quotes.json').toString();
   let lines = file.split(',');
   let foundOn = []
   for (i = 0; i < lines.length - 1; i++) {
@@ -46,7 +46,7 @@ findQuote = (name) => {
 }
 
 
-function readJSON(filename = '') {
+function readJSON(filename = '../quotes.json') {
   fs.existsSync(filename)
   return fs.readFileSync(filename).toString();
 
@@ -70,3 +70,4 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
+module.export = app.findQuote;
