@@ -10,6 +10,7 @@ function App() {
    <input type="text"></input><br></br>
    <button type="submit" class="btn btn-primary">Submit</button><br></br>
       <label>Quote</label><br></br>
+      <label>Quotes go here</label>
       
       </header>
       
