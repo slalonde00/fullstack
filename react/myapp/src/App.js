@@ -8,8 +8,11 @@ function App() {
       <header className="App-header">
   <label>Auteur</label><br></br>
    <input type="text"></input><br></br>
-      <label>Quote</label>
+   <button type="submit" class="btn btn-primary">Submit</button><br></br>
+      <label>Quote</label><br></br>
+      
       </header>
+      
     </div>
   );
 }
