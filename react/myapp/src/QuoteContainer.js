@@ -1,31 +1,17 @@
-import React, {Component} from 'react'
+import React from 'react';
+import Quote from './Quote';
 
-
-class QuoteContainer extends Component{
-  constructor() {
-       super()
-       this.state = {
-           Quote: ''
-       }
-  }
-
-  changeQuote() {
-    this.setState({
-      Quote:'Quotes goes here'
+const QuoteContainer = props => {
+const displayQuotes = () => {
+    return props.Quotes.map(Quote=> {
+        return <Quote url={Quote.url}/>
     })
-      
-  }
-  render() {
-      return (
-        <div>
-        <button onClick={()=> this.changeQuote()} class="btn btn-primary">Submit</button><br></br>
-          <br></br><label>
-              {this.state.Quote} 
-          </label>
-          </div>
-      )
-  }
-
+}
+    return (
+        <>
+    {displayQuotes()}
+    </>
+    )   
 }
 
-export default QuoteContainer;
+export default QuoteContainer
