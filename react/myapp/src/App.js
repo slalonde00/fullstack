@@ -12,17 +12,16 @@ class App extends Component{
   }
 
  
-
+      apiCall = async () => {
+      const response = await fetch('http://localhost:9000/', { mode: 'no-cors' })
+       const myJson = await response.json() 
+    };
+  
   componentDidMount() {
-    const userAction = async () =>{
-      const response = await fetch('http://localhost:27017/')
-      const myJson = await response.json();
-      let data = myJson;
-    }
-    userAction().then(data =>{
-  this.setState({Quotes: data});
-});
-}
+  this.apiCall().then(myJson => {
+  this.setState({Quotes: myJson})
+})
+};
 
 
   
