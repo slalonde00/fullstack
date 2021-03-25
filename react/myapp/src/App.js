@@ -7,14 +7,15 @@ class App extends Component{
   constructor() {
        super()
        this.state = {
-           Quotes: []
+         Quotes: [],
+        
        }
   }
 
- 
+ /*
       apiCall = async () => {
-      const response = await fetch('http://localhost:9000/', { mode: 'no-cors' })
-       const myJson = await response.json() 
+      const response = fetch('http://localhost:9000/', { mode: 'no-cors' })
+       const myJson = response.json() 
     };
   
   componentDidMount() {
@@ -22,6 +23,16 @@ class App extends Component{
   this.setState({Quotes: myJson})
 })
 };
+*/
+ sometext = '';
+  consolelogging(sometext){
+   console.log(sometext);
+ }
+datastructuremap() {
+  const response = fetch('http://localhost:9000/', { mode: 'no-cors' })
+ let  myconsolelog  = response.Json;  
+  console.log(myconsolelog);
+  };
 
 
   
@@ -32,7 +43,7 @@ class App extends Component{
       <header className="App-header">
   <label>Auteur</label><br></br>
    <input type="text"></input><br></br>
-   <button onClick={()=> this.componentDidMount()} className="btn btn-primary">Submit</button><br></br>
+   <button onClick={()=> {this.datastructuremap()}} className="btn btn-primary">Submit</button><br></br>
       <QuoteContainer Quotes={this.state.Quotes}/>
       </header>
       
