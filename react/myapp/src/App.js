@@ -29,8 +29,8 @@ class App extends Component{
    console.log(sometext);
  }
 datastructuremap = async () => {
-  const response = await fetch('http://localhost:9000/', { mode: 'no-cors' })
- let  myconsolelog  = await response.Json;  
+  const response = await fetch('http://localhost:9000/');
+ let  myconsolelog  = await response;  
   console.log(myconsolelog);
   };
 
