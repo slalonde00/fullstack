@@ -1,10 +1,10 @@
     import React from 'react'
 
-    const Quote = (props) => {
+    const QuoteData = (props) => {
 
         return (
-        <img src={props.url}/>
+        <p>{props.QuoteData}/</p>
         )
     }
 
-    export default Quote;
+    export default QuoteData;

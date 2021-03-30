@@ -1,10 +1,14 @@
 import React from 'react';
-import Quote from './Quote';
+import QuoteData from './Quote.js';
 
+function QuoteContainer() {
+    return <p>Some Quotes</p>
+}
+/*
 const QuoteContainer = props => {
 const displayQuotes = () => {
-    return props.Quotes.map(Quote=> {
-        return <Quote url={Quote.url}/>
+    return props.QuoteData.map(Quotes=> {
+        return <QuoteData Quote={QuoteData}/>
     })
 }
     return (
@@ -13,5 +17,5 @@ const displayQuotes = () => {
     </>
     )   
 }
-
+*/
 export default QuoteContainer

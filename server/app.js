@@ -10,7 +10,7 @@ var countRouter = require('./routes/count');
 var nameRouter = require('./routes/author');
 var list = require('./quotes.json');
 var fs = require('fs');
-
+var cors = require('cors');
 var app = express();
 
 // view engine setup
@@ -26,10 +26,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/quote', countRouter);
+app.use(cors());
 
 
-var fs = require('fs');
+app.get('/Quote/:0', function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for all origins!'})
+})
 
+app.listen(80, function () {
+  console.log('CORS-enabled web server listening on port 80')
+})
 
 let name = '';
 
