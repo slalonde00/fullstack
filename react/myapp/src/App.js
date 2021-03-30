@@ -1,45 +1,39 @@
-import React, {Component} from 'react'
+import React, { useState } from 'react';
 import './App.css';
-import './QuoteContainer';
-import QuoteContainer from './QuoteContainer';
+import axios from "axios";
 
-class App extends Component{
-  constructor() {
-       super()
-       this.state = {
-         Quotes: []
-        
-       }
+const App = () => {
+  const [value, setValue] = useState();
+  const [Quotes, setQuotes] = useState();
+  
+ const handleClick = async () => {
+const fetchedData = await axios.get(`127.0.0.1/${value}`)
+setQuotes(fetchedData.data);
+console.log(fetchedData);
   }
 
- 
-      apiCall = async () => {
-      const response = await fetch('127.0.0.1',{method:'get'}, {headers: {
-        "access-control-allow-origin" : "*",
-        "Content-type": "application/json; charset=UTF-8",
-        "Accept": "application/json"
-      }},{mode: 'cors'})
-       const myJson = await response.json()
-          };
-  
-  componentDidMount() {
-  this.apiCall().then(myJson => {
-  this.setState({Quotes: myJson})
-})
-};
-  render() { 
+const handleSubmit = (event) =>{
+  event.preventDefault();
+}
+
+const handleInputChange = (e) => {
+  setValue(e.target.value);
+}
+
   return (
     <div className="App">
-      <header className="App-header">
-  <label>Auteur</label><br></br>
-   <input type="text" id='userInput'></input><br></br>
-   <button onClick={()=> this.componentDidMount()} className="btn btn-primary">Submit</button><br></br>
-     <QuoteContainer />
+    <header className="App-header">
+      <form onSubmit={handleSubmit}>
+      <input type="text" value={value} onChange={handleInputChange} /><br></br>
+        <button variant="primary" onClick={handleClick} className="mt-3 mb-3">Submit</button>
+      </form>
+    </header>
+    <main className="App-main">
+    {Quotes && Quotes.map(r => <div key={r.Quotes}><label>{r.author} : </label>   </div>)}
+    </main>
+    </div>  
+    
+  )
+}
 
-      </header>
-      
-    </div>
-  )};
-
-  }
 export default App;
