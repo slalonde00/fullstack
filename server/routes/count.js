@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 
-
+/*
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
@@ -28,7 +28,7 @@ MongoClient.connect(url, function(err, client) {
   console.log('Connected successfully to server');
   const db = client.db(dbName);
     client.close();
-  })
+  })*/
 
 var fs = require('fs');
 

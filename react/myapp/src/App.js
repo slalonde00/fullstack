@@ -8,8 +8,8 @@ const App = () => {
   
  const handleClick = async () => {
 const fetchedData = await axios.get(`127.0.0.1/${value}`)
-setQuotes(fetchedData.data);
-console.log(fetchedData);
+setQuotes(fetchedData.Quote.author);
+console.log(fetchedData.Quote.author);
   }
 
 const handleSubmit = (event) =>{
@@ -29,7 +29,7 @@ const handleInputChange = (e) => {
       </form>
     </header>
     <main className="App-main">
-    {Quotes && Quotes.map(r => <div key={r.Quotes}><label>{r.author} : </label>   </div>)}
+    {Quotes && Quotes.map(r => <div key={r.author}>   </div>)}
     </main>
     </div>  
     

@@ -26,31 +26,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/quote', countRouter);
+app.use('/quote', nameRouter);
 app.use(cors());
 
-
-app.get('/Quote/:0', function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for all origins!'})
-})
 
 app.listen(80, function () {
   console.log('CORS-enabled web server listening on port 80')
 })
-
-
-let name = '';
-
-findQuote = (name) => {
-  let file = fs.readFileSync('../quotes.json').toString();
-  let lines = file.split(',');
-  let foundOn = []
-  for (i = 0; i < lines.length - 1; i++) {
-    if (lines[i].includes(name)) {
-      foundOn.push(lines[i]);
-      return foundOn[0];
-    }
-  }
-}
 
 
 const MongoClient = require('mongodb').MongoClient;
@@ -98,6 +80,9 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
 
 module.exports = app;
 module.export = app.findQuote;
