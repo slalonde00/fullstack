@@ -18,8 +18,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "launch": "react-script "
   },
+
+  "proxy": "https://localhost:3000",
+
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -35,4 +39,5 @@
       "last 1 safari version"
     ]
   }
+
 }

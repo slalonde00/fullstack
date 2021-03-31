@@ -9,11 +9,10 @@ const App = () => {
 
   
   const handleClick = async () => {
-    const response = await axios.get(`https://127.0.0.1/9000/Quote/${value}`,   );
-    const myJson = await response.json();
-    this.value.setQuote(myJson.data);  
-    console.log(myJson.Quote.author[0]);
-      
+    const response = await axios.get(`http://localhost:9000/Quote/${value}`, {headers : {'Access-Control-Allow-Origin': '*'}, 'Content-Type': 'application/json'});
+    const myJson = await response.data;
+    setQuote(myJson);
+    console.log(myJson);
   }
 
  const handleSubmit = (event) =>{
@@ -24,6 +23,9 @@ const App = () => {
   setValue(e.target.value);
 }
 
+//{Quote && Quote.map(r => <div><label>{r.Quote} : </label></div>)}
+ 
+
   return (
     <div className="App">
     <header className="App-header">
@@ -33,7 +35,6 @@ const App = () => {
       </form>
     </header>
     <main className="App-main">
-    <div id="quotesContainer"></div>
     </main>
     </div>  
     
