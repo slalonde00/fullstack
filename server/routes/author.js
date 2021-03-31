@@ -1,9 +1,14 @@
 
 
 const { count } = require('console');
+var cors = require('cors');
+
 var express = require('express');
+var cors = require('cors');
+
 var router = express.Router();
 var fs = require('fs');
+router.use(cors());
 
 //var searchFor = `/:searchFor`;
 
