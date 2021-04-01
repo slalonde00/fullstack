@@ -68,7 +68,6 @@ findQuote = (searchFor) => {
 }
 
 router.get(`/:searchFor`, function (req, res, next) {
-    //const found = findQuote(searchFor);
     const found = test();
     res.render('author', { find: found });
 

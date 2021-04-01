@@ -2,17 +2,46 @@ import React, { useState } from 'react';
 import Component from 'react';
 import './App.css';
 import axios from "axios";
+import devalue from "devalue";
 
 const App = () => {
  const [value, setValue] = useState();
   const [Quote, setQuote] = useState();
 
+  function unescapeQuote(input){
+    var e = document.createElement('textarea');
+    e.innerHTML = input;
+    // handle case of empty input
+    const a =  e.childNodes.length === 0 ? "" & {} : e.childNodes[0].nodeValue;
+    return a;
+  }
+
   
+  
+function countQuotes(textObject) {
+  let seperateur = '}'
+  const calculSeparateurNumber = (textObject.lastIndexOf('}'));
+  return (calculSeparateurNumber);
+}
+
+function findQuote(value, jsonObject) {
+  let lines = jsonObject.split('}');  
+        if (jsonObject.includes(value)) {
+        for (let i = 0; i < lines.length-1; i++) {            
+       return lines[i]
+        }
+
+  }
+}
+
   const handleClick = async () => {
     const response = await axios.get(`http://localhost:9000/Quote/${value}`, {headers : {'Access-Control-Allow-Origin': '*'}, 'Content-Type': 'application/json'});
     const myJson = await response.data;
-    setQuote(myJson);
-    console.log(myJson);
+    const unescapeObject =  unescape(myJson);
+    console.log(unescapeObject);
+   /* const rawStringObject =  unescapeQuote(myJson);
+    console.log(rawStringObject);
+    return rawStringObject;*/
   }
 
  const handleSubmit = (event) =>{
@@ -35,6 +64,7 @@ const App = () => {
       </form>
     </header>
     <main className="App-main">
+
     </main>
     </div>  
     
