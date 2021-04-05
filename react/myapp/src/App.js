@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import Component from 'react';
 import './App.css';
 import axios from "axios";
-import devalue from "devalue";
+
 
 const App = () => {
  const [value, setValue] = useState();
@@ -12,18 +11,10 @@ const App = () => {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.textContent;
   }
-  
-  
-function countQuotes(jsonObject) {
- const textObject = JSON.stringify(jsonObject)
-  let seperateur = '}'
-  const calculSeparateurNumber = (textObject.lastIndexOf('}'));
-  return (calculSeparateurNumber);
-}
 
 function findQuote(value, jsonObject) {
           for (let i = 0; i < Object.keys(jsonObject.quotes).length; i++) {            
-          if (jsonObject.quotes[i].author == value){
+          if (jsonObject.quotes[i].author === value){
           let foundQuote = jsonObject.quotes[i].quote;
           return foundQuote;
           }
@@ -31,17 +22,14 @@ function findQuote(value, jsonObject) {
 
   }
 
-
   const handleClick = async () => {
     const response = await axios.get(`http://localhost:9000/Quote/${value}`, {headers : {'Access-Control-Allow-Origin': '*'}, 'Content-Type': 'application/json'});
     const myJson = await response.data;
     const unescapedJson = htmlDecode(myJson);
     const jsonObject = JSON.parse(unescapedJson);
   const foundQuote = findQuote(value, jsonObject)
-  console.log(foundQuote); 
   setQuote(foundQuote);
   }
-
 
  const handleSubmit = (event) =>{
   event.preventDefault();
@@ -51,9 +39,6 @@ function findQuote(value, jsonObject) {
   setValue(e.target.value);
 }
 
-//{Quote && Quote.map(r => <div><label>{r.Quote} : </label></div>)}
- 
-
   return (
     <div className="App">
     <header className="App-header">
@@ -61,12 +46,9 @@ function findQuote(value, jsonObject) {
       <input type="text" onChange={handleInputChange}id="userInput"/><br></br>
         <button variant="primary" onClick={handleClick} className="mt-3 mb-3">Submit</button>
       </form>
+      <label>{Quote}</label> 
     </header>
-    <main className="App-main">
-
-    </main>
     </div>  
-    
   )
   }
 export default App;
