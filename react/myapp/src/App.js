@@ -8,41 +8,40 @@ const App = () => {
  const [value, setValue] = useState();
   const [Quote, setQuote] = useState();
 
-  function unescapeQuote(input){
-    var e = document.createElement('textarea');
-    e.innerHTML = input;
-    // handle case of empty input
-    const a =  e.childNodes.length === 0 ? "" & {} : e.childNodes[0].nodeValue;
-    return a;
+  function htmlDecode(input) {
+    var doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.textContent;
   }
-
   
   
-function countQuotes(textObject) {
+function countQuotes(jsonObject) {
+ const textObject = JSON.stringify(jsonObject)
   let seperateur = '}'
   const calculSeparateurNumber = (textObject.lastIndexOf('}'));
   return (calculSeparateurNumber);
 }
 
 function findQuote(value, jsonObject) {
-  let lines = jsonObject.split('}');  
-        if (jsonObject.includes(value)) {
-        for (let i = 0; i < lines.length-1; i++) {            
-       return lines[i]
+          for (let i = 0; i < Object.keys(jsonObject.quotes).length; i++) {            
+          if (jsonObject.quotes[i].author == value){
+          let foundQuote = jsonObject.quotes[i].quote;
+          return foundQuote;
+          }
         }
 
   }
-}
+
 
   const handleClick = async () => {
     const response = await axios.get(`http://localhost:9000/Quote/${value}`, {headers : {'Access-Control-Allow-Origin': '*'}, 'Content-Type': 'application/json'});
     const myJson = await response.data;
-    const unescapeObject =  unescape(myJson);
-    console.log(unescapeObject);
-   /* const rawStringObject =  unescapeQuote(myJson);
-    console.log(rawStringObject);
-    return rawStringObject;*/
+    const unescapedJson = htmlDecode(myJson);
+    const jsonObject = JSON.parse(unescapedJson);
+  const foundQuote = findQuote(value, jsonObject)
+  console.log(foundQuote); 
+  setQuote(foundQuote);
   }
+
 
  const handleSubmit = (event) =>{
   event.preventDefault();
