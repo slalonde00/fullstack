@@ -9,9 +9,8 @@ var app = express();
 let file = fs.readFileSync('./quotes.json').toString();
 let lines = file.split('}');
 
-function countQuotes(filename = '') {
+function countQuotes(filename = './quotes.json') {
     fs.existsSync(filename)
-    let seperateur = ','
     calculSeparateurNumber = (file.lastIndexOf('}'));
     return (calculSeparateurNumber);
 }
