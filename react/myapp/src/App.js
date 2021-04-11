@@ -16,11 +16,10 @@ function findQuote(value, jsonObject) {
   let foundQuote = [];       
   for (let i = 0; i < Object.keys(jsonObject.quotes).length; i++) {            
           if (jsonObject.quotes[i].author.includes(value)){       
-          foundQuote.push(jsonObject.quotes[i].quote);
+          foundQuote.push(('\n')+(jsonObject.quotes[i].quote));
           
           }
         }
-
         return foundQuote;
   }
 
@@ -41,6 +40,8 @@ function findQuote(value, jsonObject) {
   setValue(e.target.value);
 }
 
+//{Quote && Quote.map(r => <div key={r.Quote}><label><br></br></label></div>)}
+
   return (
   
     <div className="App">
@@ -49,7 +50,7 @@ function findQuote(value, jsonObject) {
       <input type="text" onChange={handleInputChange}id="userInput"/><br></br>
         <button variant="primary" onClick={handleClick} className="mt-3 mb-3">Submit</button>
       </form>
-      <label>{Quote}</label><br></br> 
+      <label>{Quote}</label>
     </header>
     </div>  
   )
