@@ -13,13 +13,15 @@ const App = () => {
   }
 
 function findQuote(value, jsonObject) {
-          for (let i = 0; i < Object.keys(jsonObject.quotes).length; i++) {            
-          if (jsonObject.quotes[i].author === value){
-          let foundQuote = jsonObject.quotes[i].quote;
-          return foundQuote;
+  let foundQuote = [];       
+  for (let i = 0; i < Object.keys(jsonObject.quotes).length; i++) {            
+          if (jsonObject.quotes[i].author.includes(value)){       
+          foundQuote.push(jsonObject.quotes[i].quote);
+          
           }
         }
 
+        return foundQuote;
   }
 
   const handleClick = async () => {
@@ -40,13 +42,14 @@ function findQuote(value, jsonObject) {
 }
 
   return (
+  
     <div className="App">
     <header className="App-header">
       <form onSubmit={handleSubmit}>
       <input type="text" onChange={handleInputChange}id="userInput"/><br></br>
         <button variant="primary" onClick={handleClick} className="mt-3 mb-3">Submit</button>
       </form>
-      <label>{Quote}</label> 
+      <label>{Quote}</label><br></br> 
     </header>
     </div>  
   )
