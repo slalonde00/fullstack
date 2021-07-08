@@ -10,9 +10,6 @@ var router = express.Router();
 var fs = require('fs');
 router.use(cors());
 
-//var searchFor = `/:searchFor`;
-
-
 let file = fs.readFileSync('./quotes.json').toString();
 let lines = file.split('');
 
