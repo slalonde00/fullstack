@@ -55,4 +55,4 @@ app.use(function (err, req, res, next) {
 
 
 module.exports = app;
-module.export = app.findQuote;
+//module.export = app.findQuote;

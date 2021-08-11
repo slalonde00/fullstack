@@ -11,7 +11,7 @@ var fs = require('fs');
 router.use(cors());
 
 let file = fs.readFileSync('./quotes.json').toString();
-let lines = file.split('');
+let lines = file.split('},');
 
 
 function countQuotes(filename = '') {
@@ -28,13 +28,14 @@ findauthor = (filename = './quotes.json') => {
   let authorindex = file.indexOf('"author":"')+1;
   let endStringindex = file.indexOf('}');
   let authorname = file.split(authorindex, endStringindex); 
-  let foundOn = []
+  /*let foundOn = []
   for (i = 0; i < countQuotes - 1; i++) {
       if (lines[i].includes(authorname)) {
           foundOn.push(lines[i]);
           return foundOn[i];
       }
-  }
+  }*/
+  return authorname;
 }
 
 test = (filename = './quotes.json') => {
@@ -65,7 +66,7 @@ findQuote = (searchFor) => {
 }
 
 router.get(`/:searchFor`, function (req, res, next) {
-    const found = test();
+    const found =findauthor();
     res.render('author', { find: found });
 
 }
